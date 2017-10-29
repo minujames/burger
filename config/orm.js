@@ -11,7 +11,7 @@ var orm = {
         callBack(result);
       }
     });
-  };
+  }
 };
 
 module.exports = orm;
