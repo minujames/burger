@@ -10,6 +10,14 @@ router.get("/", function(request, response) {
   });
 });
 
+router.post("/api/burger", function(request, response){
+  burger.create({
+    burger_name: request.body.burgerName,
+    devoured: (request.body.devoured) ? request.body.devoured : false
+  }, function(result){
+    response.redirect("/");
+  });
+});
 
 router.put("/api/burger/:id", function(request, response) {
   var burgerId = request.params.id;

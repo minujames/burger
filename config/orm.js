@@ -14,8 +14,17 @@ var orm = {
   },
 
   create: function(table, objColVals, callBack){
+    var queryString = "INSERT INTO " + table + " SET ? ";
+    console.log(queryString, objColVals);
 
-
+    connection.query(queryString, objColVals, function(error, result) {
+      if (error) {
+        throw error;
+      }
+      if(typeof callBack === "function"){
+        callBack(result);
+      }
+    });
   },
 
   update: function(table, objColVals, condition, callBack){

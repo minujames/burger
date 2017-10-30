@@ -2,9 +2,7 @@ var orm = require("../config/orm.js");
 
 var burger = {
   all: function(callBack) {
-    console.log("do orm call..");
     orm.all("burgers", function(result) {
-      console.log("got result", result);
       if(typeof callBack === "function"){
         callBack(result);
       }
@@ -15,7 +13,9 @@ var burger = {
   },
 
   create: function(objColVals, callBack){
-
+    orm.create("burgers", objColVals, function(result){
+      callBack(result);
+    });
   },
 
   update: function(objColVals, condition, callBack){
