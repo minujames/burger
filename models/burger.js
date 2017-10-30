@@ -14,6 +14,21 @@ var burger = {
     });
   },
 
+  create: function(objColVals, callBack){
+
+  },
+
+  update: function(objColVals, condition, callBack){
+    orm.update("burgers", objColVals, condition, function(result) {
+      callBack(result);
+    });
+  },
+
+  delete: function(condition, values, callBack){
+
+  }
+
+
 };
 
 module.exports = burger;

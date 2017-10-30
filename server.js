@@ -10,6 +10,9 @@ var port = process.env.PORT || 3000;
 // Initializing express app
 var app = express();
 
+// Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static("public"));
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -26,3 +29,4 @@ app.use("/", routes);
 app.listen(port, function(){
   console.log("listening on port", port);
 });
+ 

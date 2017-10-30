@@ -1,0 +1,17 @@
+header{
+  text-align: center;
+}
+#name-input{
+  width: 100% !important;
+}
+.addBurgerDiv{
+  text-align: center;
+}
+
+#addBurgerForm input[type=text]{
+  width:25vw !important;
+}
+
+.devour-burger{
+ float: right;
+}

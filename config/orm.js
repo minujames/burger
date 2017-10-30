@@ -1,8 +1,8 @@
 var connection = require("./connection.js");
 
 var orm = {
-  all: function(tableName, callBack){
-    var queryStr = "SELECT * FROM " + tableName + ";";
+  all: function(table, callBack){
+    var queryStr = "SELECT * FROM " + table + ";";
     connection.query(queryStr, function(error, result){
       if(error){
         throw error;
@@ -11,6 +11,29 @@ var orm = {
         callBack(result);
       }
     });
+  },
+
+  create: function(table, objColVals, callBack){
+
+
+  },
+
+  update: function(table, objColVals, condition, callBack){
+    var queryString = "UPDATE " + table + " SET ? WHERE " + condition;
+    console.log(queryString, objColVals);
+
+    connection.query(queryString, objColVals, function(error, result) {
+      if (error) {
+        throw error;
+      }
+      if(typeof callBack === "function"){
+        callBack(result);
+      }
+    });
+  },
+
+  delete: function(){
+
   }
 };
 
