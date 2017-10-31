@@ -7,42 +7,38 @@ var orm = {
       if(error){
         throw error;
       }
-      if(typeof callBack === "function"){
-        callBack(result);
-      }
+      callBack(result);
     });
   },
 
   create: function(table, objColVals, callBack){
     var queryString = "INSERT INTO " + table + " SET ? ";
-    console.log(queryString, objColVals);
-
     connection.query(queryString, objColVals, function(error, result) {
       if (error) {
         throw error;
       }
-      if(typeof callBack === "function"){
-        callBack(result);
-      }
+      callBack(result);
     });
   },
 
   update: function(table, objColVals, condition, callBack){
     var queryString = "UPDATE " + table + " SET ? WHERE " + condition;
-    console.log(queryString, objColVals);
-
     connection.query(queryString, objColVals, function(error, result) {
       if (error) {
         throw error;
       }
-      if(typeof callBack === "function"){
-        callBack(result);
-      }
+      callBack(result);
     });
   },
 
-  delete: function(){
-
+  delete: function(table, condition, callBack){
+    var queryString = "DELETE FROM " + table + " WHERE " + condition;
+    connection.query(queryString, function(error, result) {
+      if (error) {
+        throw error;
+      }
+      callBack(result);
+    });
   }
 };
 

@@ -3,12 +3,7 @@ var orm = require("../config/orm.js");
 var burger = {
   all: function(callBack) {
     orm.all("burgers", function(result) {
-      if(typeof callBack === "function"){
-        callBack(result);
-      }
-      else{
-        console.log("not a function");
-      }
+      callBack(result);
     });
   },
 
@@ -24,11 +19,11 @@ var burger = {
     });
   },
 
-  delete: function(condition, values, callBack){
-
+  delete: function(condition, callBack){
+    orm.delete("burgers", condition, function(result){
+      callBack(result);
+    });
   }
-
-
 };
 
 module.exports = burger;
